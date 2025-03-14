@@ -255,7 +255,6 @@
             min-height: 1500px; /* Sayfa yüksekliğini artırarak kaydırma uzunluğunu artırdım */
         }
 
-        
     </style>
 </head>
 <body>
@@ -274,9 +273,7 @@
         <img src="https://media.licdn.com/dms/image/v2/D4D03AQHVdrLzgWQAbA/profile-displayphoto-shrink_200_200/B4DZUvzYMPHYAc-/0/1740263753531?e=2147483647&v=beta&t=oOMgjyQb2p1m-D9pErvbRDOioSd0v8HPyROylrnEP9k" alt="Profil Resmi" class="profile-image">
         <h1>Merhaba, Ben Tolga Olgunsoy</h1>
         <p>Web Geliştirici | Tasarımcı</p>
-        <button id="themeToggle">Karanlık Tema</button> <!-- Tema değiştirme butonu -->
     </header>
-    
     
     <!-- İçerik Bölümü -->
     <div class="content">
@@ -326,35 +323,5 @@
             });
         });
     </script>
-
-    <script>
-        // Sayfa yüklendiğinde tema tercihini kontrol et
-        window.onload = function() {
-            const currentTheme = localStorage.getItem('theme');
-            if (currentTheme === 'dark') {
-                document.body.classList.add('dark');
-                document.querySelector('#themeToggle').textContent = 'Aydınlık Tema';
-            } else {
-                document.body.classList.remove('dark');
-                document.querySelector('#themeToggle').textContent = 'Karanlık Tema';
-            }
-        };
-
-        // Tema değişimini tetikleyecek buton işlevi
-        document.getElementById('themeToggle').addEventListener('click', function() {
-            document.body.classList.toggle('dark'); // Karanlık temayı açıp kapatır
-            const isDark = document.body.classList.contains('dark');
-
-            // Kullanıcı tercihini yerel depolamaya kaydet
-            if (isDark) {
-                localStorage.setItem('theme', 'dark');
-                this.textContent = 'Aydınlık Tema';
-            } else {
-                localStorage.setItem('theme', 'light');
-                this.textContent = 'Karanlık Tema';
-            }
-        });
-    </script>
-
 </body>
 </html>
