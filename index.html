@@ -7,18 +7,63 @@
     <style>
         /* Genel stil */
         body {
-            font-family: Verdana, sans-serif; /* Verdana yazı tipi */
+            font-family: Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1E90FF; /* Dodger Blue */
+            background-color: #1E90FF; /* Varsayılan Dodger Blue */
             color: #333;
-            text-align: center; /* Tüm içeriği ortalamak için */
-            overflow-x: hidden; /* Yatay kaydırma çubuğunu gizler */
-            min-height: 100vh; /* Sayfa yüksekliğini tam ekran yapar */
+            text-align: center;
+            overflow-x: hidden;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
         }
+
+        /* Karanlık tema */
+        body.dark {
+            background-color: #333333; /* Koyu arka plan */
+            color: white; /* Beyaz yazı rengi */
+        }
+
+        /* Header için temalar */
+        header {
+            background-color: #1E90FF;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header.dark {
+            background-color: #444444; /* Karanlık temada koyu gri header */
+        }
+
+        /* Tema değişim butonu */
+        #themeToggle {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            padding: 8px 16px;
+            background-color: #ffffff;
+            color: #1E90FF;
+            border: 2px solid #1E90FF;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        #themeToggle:hover {
+            background-color: #1E90FF;
+            color: white;
+        }
+
+/* Diğer stiller (değişmeden kaldı) */
+
+
+/* Diğer stiller (değişmeden kaldı) */
+
 
         /* Logo ve Navbar (Sekme kısmı) */
         .navbar {
@@ -210,6 +255,7 @@
             min-height: 1500px; /* Sayfa yüksekliğini artırarak kaydırma uzunluğunu artırdım */
         }
 
+        
     </style>
 </head>
 <body>
@@ -217,9 +263,9 @@
     <div class="navbar">
         <img src="https://media.istockphoto.com/id/1279365501/tr/vekt%C3%B6r/letter-t-logo-lettermark-monogram-typeface-type-amblem-karakter-marka.jpg?s=612x612&w=0&k=20&c=vsvueXruIpkVI8sGnWxP-OyxwycXIs6fV7KayBX_uCs=" alt="Logo"> <!-- Logo linkiniz -->
         <ul>
-            <li><a href="#about">Hakkımda</a></li>
-            <li><a href="#projects">Projelerim</a></li>
-            <li><a href="#contact">İletişim</a></li>
+            <li><a href="#about" class="smooth-scroll">Hakkımda</a></li>
+            <li><a href="#projects" class="smooth-scroll">Projelerim</a></li>
+            <li><a href="#contact" class="smooth-scroll">İletişim</a></li>
         </ul>
     </div>
 
@@ -228,7 +274,9 @@
         <img src="https://media.licdn.com/dms/image/v2/D4D03AQHVdrLzgWQAbA/profile-displayphoto-shrink_200_200/B4DZUvzYMPHYAc-/0/1740263753531?e=2147483647&v=beta&t=oOMgjyQb2p1m-D9pErvbRDOioSd0v8HPyROylrnEP9k" alt="Profil Resmi" class="profile-image">
         <h1>Merhaba, Ben Tolga Olgunsoy</h1>
         <p>Web Geliştirici | Tasarımcı</p>
+        <button id="themeToggle">Karanlık Tema</button> <!-- Tema değiştirme butonu -->
     </header>
+    
     
     <!-- İçerik Bölümü -->
     <div class="content">
@@ -263,6 +311,50 @@
     <div class="footer">
         <p>&copy; 2025 Tolga Olgunsoy. Tüm Hakları Saklıdır.</p>
     </div>
+
+    <script>
+        // Sayfa geçişini yavaşlatan animasyonu tetikleyecek JavaScript kodu
+        document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1); // Hedef id'yi al
+                const targetElement = document.getElementById(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100, // Hedefin üst kısmından 100px yukarıda duracak şekilde
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // Sayfa yüklendiğinde tema tercihini kontrol et
+        window.onload = function() {
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark');
+                document.querySelector('#themeToggle').textContent = 'Aydınlık Tema';
+            } else {
+                document.body.classList.remove('dark');
+                document.querySelector('#themeToggle').textContent = 'Karanlık Tema';
+            }
+        };
+
+        // Tema değişimini tetikleyecek buton işlevi
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark'); // Karanlık temayı açıp kapatır
+            const isDark = document.body.classList.contains('dark');
+
+            // Kullanıcı tercihini yerel depolamaya kaydet
+            if (isDark) {
+                localStorage.setItem('theme', 'dark');
+                this.textContent = 'Aydınlık Tema';
+            } else {
+                localStorage.setItem('theme', 'light');
+                this.textContent = 'Karanlık Tema';
+            }
+        });
+    </script>
 
 </body>
 </html>
