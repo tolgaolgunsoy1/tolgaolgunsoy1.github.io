@@ -10,7 +10,7 @@
             font-family: Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1E90FF; /* Varsayılan Dodger Blue */
+            background-color: #104E8B; /* Daha koyu mavi */
             color: #333;
             text-align: center;
             overflow-x: hidden;
@@ -30,7 +30,7 @@
 
         /* Header için temalar */
         header {
-            background-color: #1E90FF;
+            background-color: #104E8B; /* Daha koyu mavi */
             color: white;
             text-align: center;
             padding: 40px 20px;
@@ -38,32 +38,64 @@
 
         header.dark {
             background-color: #444444; /* Karanlık temada koyu gri header */
+            color: white;
         }
 
         /* Tema değişim butonu */
         #themeToggle {
-            position: absolute;
-            top: 10px;
-            right: 20px;
             padding: 8px 16px;
             background-color: #ffffff;
-            color: #1E90FF;
-            border: 2px solid #1E90FF;
+            color: #104E8B; /* Daha koyu mavi */
+            border: 2px solid #104E8B; /* Daha koyu mavi */
             border-radius: 5px;
             cursor: pointer;
             font-size: 1em;
         }
 
         #themeToggle:hover {
-            background-color: #1E90FF;
+            background-color: #104E8B; /* Daha koyu mavi */
             color: white;
         }
 
-/* Diğer stiller (değişmeden kaldı) */
+        /* Buton aktifken değişen stil */
+        body.dark #themeToggle {
+            background-color: #333333;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
 
+        body.dark #themeToggle:hover {
+            background-color: #444444;
+        }
 
-/* Diğer stiller (değişmeden kaldı) */
+        /* Dil değişim butonu */
+        #languageToggle {
+            padding: 8px 16px;
+            background-color: #ffffff;
+            color: #104E8B; /* Daha koyu mavi */
+            border: 2px solid #104E8B; /* Daha koyu mavi */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-left: 10px;
+        }
 
+        #languageToggle:hover {
+            background-color: #104E8B; /* Daha koyu mavi */
+            color: white;
+            border: 2px solid white; /* Beyaz kenarlık */
+        }
+
+        body.dark #languageToggle {
+            background-color: #333333;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        body.dark #languageToggle:hover {
+            background-color: #444444;
+            border: 2px solid white; /* Beyaz kenarlık */
+        }
 
         /* Logo ve Navbar (Sekme kısmı) */
         .navbar {
@@ -73,10 +105,22 @@
             background-color: white;
             padding: 10px 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px; /* Köşeleri yuvarlatma */
+            width: 100%;
+            margin-top: 20px; /* Navbar ile tema butonu arasına boşluk ekleme */
+            width: 90%;
+            margin: 20px auto; /* Navbar'ı ortalamak için */
+        }
+
+        body.dark .navbar {
+            background-color: #444444; /* Karanlık modda navbar arka planı */
+            color: white;
         }
 
         .navbar img {
             height: 50px; /* Logo yüksekliği */
+            border-radius: 50%; /* Logo daire şekli */
+            border: 2px solid white; /* İnce beyaz kenarlık */
         }
 
         .navbar ul {
@@ -92,8 +136,12 @@
 
         .navbar ul li a {
             text-decoration: none;
-            color: #1E90FF; /* Link rengi */
+            color: #104E8B; /* Daha koyu mavi */
             font-size: 1em; /* Duyarlı boyut */
+        }
+
+        body.dark .navbar ul li a {
+            color: white; /* Karanlık modda navbar link rengi */
         }
 
         .navbar ul li a:hover {
@@ -102,7 +150,7 @@
 
         /* Header Bölümü */
         header {
-            background-color: #1E90FF; /* Dodger Blue */
+            background-color: #104E8B; /* Daha koyu mavi */
             color: white;
             text-align: center;
             padding: 40px 20px;
@@ -143,9 +191,14 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             width: 80%;
             max-width: 900px; /* Maksimum genişlik */
-            opacity: 0;
-            transform: translateY(50px);
+            opacity: 1; /* Opacity set to 1 to make it visible */
+            transform: translateY(0); /* Transform set to 0 to make it visible */
             animation: fadeInUp 1s forwards; /* Animasyon ekledim */
+        }
+
+        body.dark section {
+            background-color: #444444; /* Karanlık modda bölüm arka planı */
+            color: white;
         }
 
         /* Animasyonlar */
@@ -158,11 +211,15 @@
 
         /* Hakkımda, Projelerim ve İletişim Başlıkları */
         section h2 {
-            color: #1E90FF; /* Dodger Blue */
+            color: #104E8B; /* Daha koyu mavi */
             font-size: 1.8em; /* Başlık boyutunu daha küçük yaptım */
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        body.dark section h2 {
+            color: white; /* Karanlık modda başlıklar beyaz */
         }
 
         /* Projeler Listeleme */
@@ -177,15 +234,19 @@
         }
 
         #projects ul li a {
-            color: #1E90FF;
+            color: #104E8B; /* Daha koyu mavi */
             text-decoration: none;
             font-size: 1em; /* Projeler metnini daha uygun hale getirdim */
             font-weight: 600;
             transition: color 0.3s ease;
         }
 
+        body.dark #projects ul li a {
+            color: white; /* Karanlık modda proje link renk değişimi */
+        }
+
         #projects ul li a:hover {
-            color: #00BFFF; /* Hover efekti */
+            color: #1C86EE; /* Hover efekti */
         }
 
         #projects ul li:hover {
@@ -197,41 +258,82 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            background-color: #ffffff; /* Aydınlık modda beyaz arka plan */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark form {
+            background-color: #444444; /* Karanlık modda form arka planı */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         form label {
-            font-size: 1.1em; /* Label yazı boyutunu büyüttüm */
+            font-size: 1.1em;
             color: #333;
+            margin-bottom: 8px;
         }
 
-        form input, form button {
-            padding: 10px;
-            font-size: 0.9em; /* Buton ve input boyutunu küçülttüm */
+        body.dark form label {
+            color: white; /* Karanlık modda etiket rengi beyaz */
+        }
+
+        form input,
+        form textarea {
+            padding: 12px;
+            font-size: 1em;
             border: 1px solid #ccc;
-            border-radius: 8px;
-            transition: border 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            color: #333;
+            transition: all 0.3s ease;
         }
 
-        form input {
-            width: 100%;
+        body.dark form input,
+        body.dark form textarea {
+            background-color: #555555; /* Karanlık modda input ve textarea arka planı */
+            color: white; /* Yazı rengi beyaz */
+            border: 1px solid #666666; /* Karanlık modda koyu gri kenarlık */
         }
 
-        form input:focus, form button:focus {
-            border: 1px solid #1E90FF;
+        /* Aydınlık modda input ve textarea odaklanınca */
+        form input:focus,
+        form textarea:focus {
+            border-color: #104E8B; /* Daha koyu mavi */
+            box-shadow: 0 0 5px #104E8B; /* Daha koyu mavi */
+        }
+
+        /* Karanlık modda input ve textarea odaklanınca */
+        body.dark form input:focus,
+        body.dark form textarea:focus {
+            border-color: #1E90FF;
             box-shadow: 0 0 5px #1E90FF;
         }
 
+        /* Buton */
         form button {
-            background-color: #1E90FF; /* Dodger Blue */
-            color: white;
+            padding: 12px;
+            font-size: 1.1em;
             border: none;
+            border-radius: 6px;
+            background-color: #104E8B; /* Daha koyu mavi */
+            color: white;
             cursor: pointer;
-            font-size: 1em; /* Buton boyutunu küçülttüm */
             transition: background-color 0.3s ease;
         }
 
         form button:hover {
-            background-color: #00BFFF; /* Hover rengi daha açık mavi */
+            background-color: #1C86EE; /* Hover efekti */
+        }
+
+        body.dark form button {
+            background-color: #333333; /* Karanlık modda buton arka planı */
+            color: white; /* Beyaz yazı */
+        }
+
+        body.dark form button:hover {
+            background-color: #444444; /* Hover rengi daha koyu */
         }
 
         /* Footer (Alt navbar) */
@@ -244,61 +346,81 @@
             margin-top: 30px;
         }
 
+        body.dark .footer {
+            background-color: #444444; /* Footer arka planı koyulaştırıldı */
+        }
+
         .footer p {
             color: #333;
             font-size: 0.9em; /* Küçük yazı boyutu */
         }
 
+        body.dark .footer p {
+            color: white; /* Footer yazı rengi beyaz */
+        }
+
         /* Sayfa Uzunluğu Arttırma */
         .content {
+            padding-top: 80px; /* Navbar yüksekliği kadar boşluk ekle */
             padding: 60px 20px;
             min-height: 1500px; /* Sayfa yüksekliğini artırarak kaydırma uzunluğunu artırdım */
         }
-
     </style>
 </head>
 <body>
-    <!-- Logo ve Navbar (Sekme kısmı) -->
-    <div class="navbar">
-        <img src="https://media.istockphoto.com/id/1279365501/tr/vekt%C3%B6r/letter-t-logo-lettermark-monogram-typeface-type-amblem-karakter-marka.jpg?s=612x612&w=0&k=20&c=vsvueXruIpkVI8sGnWxP-OyxwycXIs6fV7KayBX_uCs=" alt="Logo"> <!-- Logo linkiniz -->
-        <ul>
-            <li><a href="#about" class="smooth-scroll">Hakkımda</a></li>
-            <li><a href="#projects" class="smooth-scroll">Projelerim</a></li>
-            <li><a href="#contact" class="smooth-scroll">İletişim</a></li>
-        </ul>
+    <div class="navbar" style="width: 90%; margin: 10px auto;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyCiorgy9iIrRF7rjn6QFk6-Va2hqaQlmVrw&s" alt="Yeni Logo" style="height: 50px; border-radius: 50%; border: 2px solid white;" onclick="location.reload();">
+        <div style="display: flex; align-items: center;">
+            <button id="themeToggle">Karanlık Modu Aç</button>
+            <button id="languageToggle" style="margin-left: 10px;">TR / EN</button>
+        </div>
     </div>
-
-    <!-- Ana Sayfa -->
+    <img src="https://media.licdn.com/dms/image/v2/D4D03AQHVdrLzgWQAbA/profile-displayphoto-shrink_200_200/B4DZUvzYMPHYAc-/0/1740263753531?e=1747872000&v=beta&t=5LV1AlgcEPoYawJQAugz-GeViOqjEyfmrqeEK17zwb4" alt="Profil Resmi" style="height: 200px; border-radius: 50%; border: 2px solid white; margin: 20px auto;">
+    <p id="greeting" style="color: white; font-size: 2.5em; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Merhaba, ben Tolga Olgunsoy</p>
     <header>
-        <img src="https://media.licdn.com/dms/image/v2/D4D03AQHVdrLzgWQAbA/profile-displayphoto-shrink_200_200/B4DZUvzYMPHYAc-/0/1740263753531?e=2147483647&v=beta&t=oOMgjyQb2p1m-D9pErvbRDOioSd0v8HPyROylrnEP9k" alt="Profil Resmi" class="profile-image">
-        <h1>Merhaba, Ben Tolga Olgunsoy</h1>
-        <p>Web Geliştirici | Tasarımcı</p>
+        <!-- Başlık ve açıklama kaldırıldı -->
     </header>
-    
-    <!-- İçerik Bölümü -->
     <div class="content">
-        <!-- Hakkımda -->
         <section id="about">
             <h2>Hakkımda</h2>
-            <p>Ben Tolga Olgunsoy. Web geliştirme ve tasarım konularında tecrübeliyim. Eğitimim, iş deneyimlerim ve uzmanlık alanlarım hakkında daha fazla bilgi edinmek için aşağıdaki bölümleri inceleyebilirsiniz.</p>
+            <p id="aboutText">Ben Tolga Olgunsoy. Web geliştirme ve tasarım konularında tecrübeliyim. Eğitimim, iş deneyimlerim ve uzmanlık alanlarım hakkında daha fazla bilgi edinmek için aşağıdaki bölümleri inceleyebilirsiniz.</p>
         </section>
         
-        <!-- Projeler -->
-        <section id="projects">
-            <h2>Projelerim</h2>
-            <ul>
-                <li><a href="https://github.com/proje1" target="_blank">Proje 1: Web Uygulaması</a></li>
-                <li><a href="https://github.com/proje2" target="_blank">Proje 2: E-ticaret Sitesi</a></li>
-                <li><a href="https://github.com/proje3" target="_blank">Proje 3: Kişisel Blog</a></li>
-            </ul>
+        <!-- Eğitim -->
+        <section id="education">
+            <h2>Eğitim</h2>
+            <div class="certificate">
+                <h3>Yönetim Bilişim Sistemleri</h3>
+                <p>İstanbul Topkapı Üniversitesi (2022 - 2027)</p>
+            </div>
+        </section>
+        
+        <!-- Lisanslar ve Sertifikalar -->
+        <section id="certificates">
+            <h2>Lisanslar ve Sertifikalar</h2>
+            <div class="certificate">
+                <h3>Siber Güvenliğe Giriş</h3>
+                <p>BTK Akademi (Mart 2025)</p>
+            </div>
+            <div class="certificate">
+                <h3>Introduction to Cybersecurity</h3>
+                <p>Cisco Networking Academy (Şubat 2025)</p>
+            </div>
         </section>
         
         <!-- İletişim -->
         <section id="contact">
             <h2>İletişim</h2>
-            <form action="#">
+            <form>
+                <label for="name">Adınız:</label>
+                <input type="text" id="name" name="name" required>
+
                 <label for="email">E-posta:</label>
                 <input type="email" id="email" name="email" required>
+
+                <label for="message">Mesajınız:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
                 <button type="submit">Gönder</button>
             </form>
         </section>
@@ -310,18 +432,402 @@
     </div>
 
     <script>
-        // Sayfa geçişini yavaşlatan animasyonu tetikleyecek JavaScript kodu
-        document.querySelectorAll('.smooth-scroll').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1); // Hedef id'yi al
-                const targetElement = document.getElementById(targetId);
-                window.scrollTo({
-                    top: targetElement.offsetTop - 100, // Hedefin üst kısmından 100px yukarıda duracak şekilde
-                    behavior: 'smooth'
-                });
-            });
+        // Tema Değiştirici
+        const themeToggleButton = document.getElementById('themeToggle');
+        themeToggleButton.addEventListener('click', function() {
+            document.body.classList.toggle('dark'); // Karanlık mod aktifleşir.
+            
+            // Header'ı da karanlık moda almak için
+            document.querySelector('header').classList.toggle('dark');
+            
+            // Tema butonunun metnini değiştirme
+            if (document.body.classList.contains('dark')) {
+                themeToggleButton.textContent = 'Aydınlık Modu Aç';
+            } else {
+                themeToggleButton.textContent = 'Karanlık Modu Aç';
+            }
+        });
+
+        // Dil Değiştirici
+        const languageToggleButton = document.getElementById('languageToggle');
+        const greetingText = document.getElementById('greeting');
+        const aboutText = document.getElementById('aboutText');
+        let isTurkish = true;
+
+        languageToggleButton.addEventListener('click', function() {
+            if (isTurkish) {
+                greetingText.textContent = 'Hello, I am Tolga Olgunsoy';
+                aboutText.textContent = 'I am Tolga Olgunsoy. I am experienced in web development and design. You can learn more about my education, work experiences, and areas of expertise by reviewing the sections below.';
+                languageToggleButton.textContent = 'EN / TR';
+            } else {
+                greetingText.textContent = 'Merhaba, ben Tolga Olgunsoy';
+                aboutText.textContent = 'Ben Tolga Olgunsoy. Web geliştirme ve tasarım konularında tecrübeliyim. Eğitimim, iş deneyimlerim ve uzmanlık alanlarım hakkında daha fazla bilgi edinmek için aşağıdaki bölümleri inceleyebilirsiniz.';
+                languageToggleButton.textContent = 'TR / EN';
+            }
+            isTurkish = !isTurkish;
         });
     </script>
 </body>
 </html>
+<style>
+    /* Genel stil */
+    body {
+        font-family: Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #104E8B; /* Daha koyu mavi */
+        color: #333;
+        text-align: center;
+        overflow-x: hidden;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        scroll-behavior: smooth;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Karanlık tema */
+    body.dark {
+        background-color: #333333; /* Koyu arka plan */
+        color: white; /* Beyaz yazı rengi */
+    }
+
+    /* Header için temalar */
+    header {
+        background-color: #104E8B; /* Daha koyu mavi */
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    header.dark {
+        background-color: #444444; /* Karanlık temada koyu gri header */
+        color: white;
+    }
+
+    /* Tema değişim butonu */
+    #themeToggle {
+        padding: 8px 16px;
+        background-color: #ffffff;
+        color: #104E8B; /* Daha koyu mavi */
+        border: 2px solid #104E8B; /* Daha koyu mavi */
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+    }
+
+    #themeToggle:hover {
+        background-color: #104E8B; /* Daha koyu mavi */
+        color: white;
+    }
+
+    /* Buton aktifken değişen stil */
+    body.dark #themeToggle {
+        background-color: #333333;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+    }
+
+    body.dark #themeToggle:hover {
+        background-color: #444444;
+    }
+
+    /* Dil değişim butonu */
+    #languageToggle {
+        padding: 8px 16px;
+        background-color: #ffffff;
+        color: #104E8B; /* Daha koyu mavi */
+        border: 2px solid #104E8B; /* Daha koyu mavi */
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        margin-left: 10px;
+    }
+
+    #languageToggle:hover {
+        background-color: #104E8B; /* Daha koyu mavi */
+        color: white;
+        border: 2px solid white; /* Beyaz kenarlık */
+    }
+
+    body.dark #languageToggle {
+        background-color: #333333;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+    }
+
+    body.dark #languageToggle:hover {
+        background-color: #444444;
+        border: 2px solid white; /* Beyaz kenarlık */
+    }
+
+    /* Logo ve Navbar (Sekme kısmı) */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+        padding: 10px 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 12px; /* Köşeleri yuvarlatma */
+        width: 100%;
+        margin-top: 20px; /* Navbar ile tema butonu arasına boşluk ekleme */
+        width: 90%;
+        margin: 20px auto; /* Navbar'ı ortalamak için */
+    }
+
+    body.dark .navbar {
+        background-color: #444444; /* Karanlık modda navbar arka planı */
+        color: white;
+    }
+
+    .navbar img {
+        height: 50px; /* Logo yüksekliği */
+        border-radius: 50%; /* Logo daire şekli */
+        border: 2px solid white; /* İnce beyaz kenarlık */
+    }
+
+    .navbar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
+
+    .navbar ul li {
+        margin-left: 20px;
+    }
+
+    .navbar ul li a {
+        text-decoration: none;
+        color: #104E8B; /* Daha koyu mavi */
+        font-size: 1em; /* Duyarlı boyut */
+    }
+
+    body.dark .navbar ul li a {
+        color: white; /* Karanlık modda navbar link rengi */
+    }
+
+    .navbar ul li a:hover {
+        text-decoration: underline;
+    }
+
+    /* Header Bölümü */
+    header {
+        background-color: #104E8B; /* Daha koyu mavi */
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    header h1 {
+        font-size: 2em; /* Başlık boyutunu düşürdüm */
+        margin: 0;
+    }
+
+    header p {
+        font-size: 1em; /* Metin boyutunu daha uygun yaptım */
+        margin-top: 10px;
+    }
+
+    /* Profil Resmi */
+    .profile-image {
+        width: 180px; /* Resmin boyutu */
+        height: 180px;
+        border-radius: 50%; /* Daire şekli */
+        border: 8px solid white; /* Beyaz kenarlık */
+        margin: 20px auto; /* Ortalamak için */
+        display: block;
+        object-fit: cover; /* Resmin oranını korur ve kutuyu doldurur */
+        transition: transform 0.5s ease; /* Animasyon ekledim */
+    }
+
+    .profile-image:hover {
+        transform: scale(1.1); /* Resmi hover'da büyütme */
+    }
+
+    /* Bölümler */
+    section {
+        padding: 30px 20px;
+        margin: 20px auto;
+        background-color: white; /* Beyaz arka plan */
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 900px; /* Maksimum genişlik */
+        opacity: 1; /* Opacity set to 1 to make it visible */
+        transform: translateY(0); /* Transform set to 0 to make it visible */
+        animation: fadeInUp 1s forwards; /* Animasyon ekledim */
+    }
+
+    body.dark section {
+        background-color: #444444; /* Karanlık modda bölüm arka planı */
+        color: white;
+    }
+
+    /* Animasyonlar */
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Hakkımda, Projelerim ve İletişim Başlıkları */
+    section h2 {
+        color: #104E8B; /* Daha koyu mavi */
+        font-size: 1.8em; /* Başlık boyutunu daha küçük yaptım */
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    body.dark section h2 {
+        color: white; /* Karanlık modda başlıklar beyaz */
+    }
+
+    /* Projeler Listeleme */
+    #projects ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    #projects ul li {
+        margin: 12px 0; /* Yükseklikleri azaltarak daha sıkı hale getirdim */
+        transition: transform 0.3s ease;
+    }
+
+    #projects ul li a {
+        color: #104E8B; /* Daha koyu mavi */
+        text-decoration: none;
+        font-size: 1em; /* Projeler metnini daha uygun hale getirdim */
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    body.dark #projects ul li a {
+        color: white; /* Karanlık modda proje link renk değişimi */
+    }
+
+    #projects ul li a:hover {
+        color: #1C86EE; /* Hover efekti */
+    }
+
+    #projects ul li:hover {
+        transform: translateX(10px); /* Sola kaydırma efekti */
+    }
+
+    /* İletişim Formu */
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        background-color: #ffffff; /* Aydınlık modda beyaz arka plan */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark form {
+        background-color: #444444; /* Karanlık modda form arka planı */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    form label {
+        font-size: 1.1em;
+        color: #333;
+        margin-bottom: 8px;
+    }
+
+    body.dark form label {
+        color: white; /* Karanlık modda etiket rengi beyaz */
+    }
+
+    form input,
+    form textarea {
+        padding: 12px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: #f9f9f9;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    body.dark form input,
+    body.dark form textarea {
+        background-color: #555555; /* Karanlık modda input ve textarea arka planı */
+        color: white; /* Yazı rengi beyaz */
+        border: 1px solid #666666; /* Karanlık modda koyu gri kenarlık */
+    }
+
+    /* Aydınlık modda input ve textarea odaklanınca */
+    form input:focus,
+    form textarea:focus {
+        border-color: #104E8B; /* Daha koyu mavi */
+        box-shadow: 0 0 5px #104E8B; /* Daha koyu mavi */
+    }
+
+    /* Karanlık modda input ve textarea odaklanınca */
+    body.dark form input:focus,
+    body.dark form textarea:focus {
+        border-color: #1E90FF;
+        box-shadow: 0 0 5px #1E90FF;
+    }
+
+    /* Buton */
+    form button {
+        padding: 12px;
+        font-size: 1.1em;
+        border: none;
+        border-radius: 6px;
+        background-color: #104E8B; /* Daha koyu mavi */
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+        background-color: #1C86EE; /* Hover efekti */
+    }
+
+    body.dark form button {
+        background-color: #333333; /* Karanlık modda buton arka planı */
+        color: white; /* Beyaz yazı */
+    }
+
+    body.dark form button:hover {
+        background-color: #444444; /* Hover rengi daha koyu */
+    }
+
+    /* Footer (Alt navbar) */
+    .footer {
+        background-color: white;
+        width: 100%; /* Footer'ı sayfa genişliğinde yapmak için */
+        padding: 10px 0; /* Footer'ın yüksekliğini küçülttüm */
+        text-align: center;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
+    }
+
+    body.dark .footer {
+        background-color: #444444; /* Footer arka planı koyulaştırıldı */
+    }
+
+    .footer p {
+        color: #333;
+        font-size: 0.9em; /* Küçük yazı boyutu */
+    }
+
+    body.dark .footer p {
+        color: white; /* Footer yazı rengi beyaz */
+    }
+
+    /* Sayfa Uzunluğu Arttırma */
+    .content {
+        padding-top: 80px; /* Navbar yüksekliği kadar boşluk ekle */
+        padding: 60px 20px;
+        min-height: 1500px; /* Sayfa yüksekliğini artırarak kaydırma uzunluğunu artırdım */
+    }
+</style>
