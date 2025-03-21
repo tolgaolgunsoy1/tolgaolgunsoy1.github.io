@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"="width=device-width, initial-scale=1.0">
     <title>Portföyüm</title>
     <style>
         /* Genel stil */
@@ -117,12 +117,6 @@
             color: white;
         }
 
-        .navbar img {
-            height: 50px; /* Logo yüksekliği */
-            border-radius: 50%; /* Logo daire şekli */
-            border: 2px solid white; /* İnce beyaz kenarlık */
-        }
-
         .navbar ul {
             list-style: none;
             padding: 0;
@@ -168,18 +162,30 @@
 
         /* Profil Resmi */
         .profile-image {
-            width: 180px; /* Resmin boyutu */
-            height: 180px;
-            border-radius: 50%; /* Daire şekli */
-            border: 8px solid white; /* Beyaz kenarlık */
-            margin: 20px auto; /* Ortalamak için */
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid #104E8B;
+            margin: 20px auto;
             display: block;
-            object-fit: cover; /* Resmin oranını korur ve kutuyu doldurur */
-            transition: transform 0.5s ease; /* Animasyon ekledim */
         }
 
-        .profile-image:hover {
-            transform: scale(1.1); /* Resmi hover'da büyütme */
+        body.dark .profile-image {
+            border: 2px solid white; /* Karanlık modda çember beyaz */
+        }
+
+        .profile-name {
+            text-align: center;
+            color: #104E8B;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .profile-title {
+            text-align: center;
+            color: #666;
+            font-size: 1em;
+            margin-top: 0;
         }
 
         /* Bölümler */
@@ -365,18 +371,110 @@
             padding: 60px 20px;
             min-height: 1500px; /* Sayfa yüksekliğini artırarak kaydırma uzunluğunu artırdım */
         }
+
+        /* Eğitim kutusu */
+        .education-box {
+            background-color: #e0e0e0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark .education-box {
+            background-color: #555555; /* Karanlık modda kutu arka planı */
+            color: white; /* Karanlık modda yazı rengi */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Daha koyu gölge */
+        }
+
+        /* Sertifika kutusu */
+        .certificate-box {
+            background-color: #e0e0e0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px; /* Sertifikalar arasında boşluk */
+        }
+
+        body.dark .certificate-box {
+            background-color: #555555; /* Karanlık modda kutu arka planı */
+            color: white; /* Karanlık modda yazı rengi */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Daha koyu gölge */
+        }
+
+        /* Sidebar stil */
+        #sidebar {
+            width: 0;
+            height: 100%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: white;
+            overflow-x: hidden;
+            transition: 0.5s, background-color 0.3s ease;
+            padding-top: 20px;
+        }
+
+        body.dark #sidebar {
+            background-color: #444444; /* Karanlık modda sidebar arka planı gri */
+        }
+
+        #sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #104E8B; /* Sidebar link rengi */
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        body.dark #sidebar a {
+            color: white; /* Karanlık modda sidebar link rengi beyaz */
+        }
+
+        #sidebar a:hover {
+            color: #1C86EE; /* Hover rengi */
+        }
+
+        #sidebar .closebtn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 36px;
+            color: lightcoral;
+            margin-left: 50px;
+        }
+
+        body.dark .profile-name,
+        body.dark .profile-title {
+            color: white; /* Karanlık modda yazı rengi beyaz */
+        }
     </style>
 </head>
 <body>
     <div class="navbar" style="width: 90%; margin: 10px auto;">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyCiorgy9iIrRF7rjn6QFk6-Va2hqaQlmVrw&s" alt="Yeni Logo" style="height: 50px; border-radius: 50%; border: 2px solid white;" onclick="location.reload();">
+        <div style="display: flex; align-items: center;">
+            <div id="hamburgerMenu" style="cursor: pointer; margin-right: 20px;">
+                <div style="width: 25px; height: 3px; background-color: #104E8B; margin: 4px 0;"></div>
+                <div style="width: 25px; height: 3px; background-color: #104E8B; margin: 4px 0;"></div>
+                <div style="width: 25px; height: 3px; background-color: #104E8B; margin: 4px 0;"></div>
+            </div>
+            <div style="margin-left: 10px; text-align: left; padding: 10px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <p style="margin: 0; font-size: 1.5em; font-weight: bold; color: #104E8B;">Tolga Olgunsoy</p>
+                <p style="margin: 0; font-size: 1em; color: #666;">Siber Güvenlik Uzmanı</p>
+            </div>
+        </div>
         <div style="display: flex; align-items: center;">
             <button id="themeToggle">Karanlık Modu Aç</button>
             <button id="languageToggle" style="margin-left: 10px;">TR / EN</button>
         </div>
     </div>
-    <img src="https://media.licdn.com/dms/image/v2/D4D03AQHVdrLzgWQAbA/profile-displayphoto-shrink_200_200/B4DZUvzYMPHYAc-/0/1740263753531?e=1747872000&v=beta&t=5LV1AlgcEPoYawJQAugz-GeViOqjEyfmrqeEK17zwb4" alt="Profil Resmi" style="height: 200px; border-radius: 50%; border: 2px solid white; margin: 20px auto;">
-    <p id="greeting" style="color: white; font-size: 2.5em; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Merhaba, ben Tolga Olgunsoy</p>
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <img src="https://media.licdn.com/dms/image/v2/D4D03AQHVdrLzgWQAbA/profile-displayphoto-shrink_200_200/B4DZUvzYMPHYAc-/0/1740263753531?e=1747872000&v=beta&t=5LV1AlgcEPoYawJQAugz-GeViOqjEyfmrqeEK17zwb4" alt="Profil Resmi" class="profile-image">
+        <p class="profile-name">Tolga Olgunsoy</p>
+        <p class="profile-title">Siber Güvenlik Uzmanı</p>
+    </div>
     <header>
         <!-- Başlık ve açıklama kaldırıldı -->
     </header>
@@ -389,7 +487,7 @@
         <!-- Eğitim -->
         <section id="education">
             <h2>Eğitim</h2>
-            <div class="certificate">
+            <div class="education-box">
                 <h3>Yönetim Bilişim Sistemleri</h3>
                 <p>İstanbul Topkapı Üniversitesi (2022 - 2027)</p>
             </div>
@@ -398,11 +496,11 @@
         <!-- Lisanslar ve Sertifikalar -->
         <section id="certificates">
             <h2>Lisanslar ve Sertifikalar</h2>
-            <div class="certificate">
+            <div class="certificate-box">
                 <h3>Siber Güvenliğe Giriş</h3>
                 <p>BTK Akademi (Mart 2025)</p>
             </div>
-            <div class="certificate">
+            <div class="certificate-box">
                 <h3>Introduction to Cybersecurity</h3>
                 <p>Cisco Networking Academy (Şubat 2025)</p>
             </div>
@@ -466,6 +564,22 @@
             }
             isTurkish = !isTurkish;
         });
+
+        // Hamburger Menu
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const sidebar = document.getElementById('sidebar');
+
+        hamburgerMenu.addEventListener('click', function() {
+            if (sidebar.style.width === '0px' || sidebar.style.width === '') {
+                sidebar.style.width = '40%';
+            } else {
+                sidebar.style.width = '0';
+            }
+        });
+
+        function closeNav() {
+            sidebar.style.width = '0';
+        }
     </script>
 </body>
 </html>
@@ -582,12 +696,6 @@
         color: white;
     }
 
-    .navbar img {
-        height: 50px; /* Logo yüksekliği */
-        border-radius: 50%; /* Logo daire şekli */
-        border: 2px solid white; /* İnce beyaz kenarlık */
-    }
-
     .navbar ul {
         list-style: none;
         padding: 0;
@@ -633,18 +741,30 @@
 
     /* Profil Resmi */
     .profile-image {
-        width: 180px; /* Resmin boyutu */
-        height: 180px;
-        border-radius: 50%; /* Daire şekli */
-        border: 8px solid white; /* Beyaz kenarlık */
-        margin: 20px auto; /* Ortalamak için */
+        height: 200px;
+        border-radius: 50%;
+        border: 2px solid #104E8B;
+        margin: 20px auto;
         display: block;
-        object-fit: cover; /* Resmin oranını korur ve kutuyu doldurur */
-        transition: transform 0.5s ease; /* Animasyon ekledim */
     }
 
-    .profile-image:hover {
-        transform: scale(1.1); /* Resmi hover'da büyütme */
+    body.dark .profile-image {
+        border: 2px solid white; /* Karanlık modda çember beyaz */
+    }
+
+    .profile-name {
+        text-align: center;
+        color: #104E8B;
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .profile-title {
+        text-align: center;
+        color: #666;
+        font-size: 1em;
+        margin-top: 0;
     }
 
     /* Bölümler */
@@ -830,4 +950,83 @@
         padding: 60px 20px;
         min-height: 1500px; /* Sayfa yüksekliğini artırarak kaydırma uzunluğunu artırdım */
     }
+
+    /* Eğitim kutusu */
+    .education-box {
+        background-color: #e0e0e0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark .education-box {
+        background-color: #555555; /* Karanlık modda kutu arka planı */
+        color: white; /* Karanlık modda yazı rengi */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Daha koyu gölge */
+    }
+
+    /* Sertifika kutusu */
+    .certificate-box {
+        background-color: #e0e0e0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px; /* Sertifikalar arasında boşluk */
+    }
+
+    body.dark .certificate-box {
+        background-color: #555555; /* Karanlık modda kutu arka planı */
+        color: white; /* Karanlık modda yazı rengi */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Daha koyu gölge */
+    }
+
+    /* Sidebar stil */
+    #sidebar {
+        width: 0;
+        height: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: white;
+        overflow-x: hidden;
+        transition: 0.5s, background-color 0.3s ease;
+        padding-top: 20px;
+    }
+
+    body.dark #sidebar {
+        background-color: #444444; /* Karanlık modda sidebar arka planı gri */
+    }
+
+    #sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #104E8B; /* Sidebar link rengi */
+        display: block;
+        transition: color 0.3s ease;
+    }
+
+    body.dark #sidebar a {
+        color: white; /* Karanlık modda sidebar link rengi beyaz */
+    }
+
+    #sidebar a:hover {
+        color: #1C86EE; /* Hover rengi */
+    }
+
+    #sidebar .closebtn {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 36px;
+        color: lightcoral;
+        margin-left: 50px;
+    }
+
+    body.dark .profile-name,
+    body.dark .profile-title {
+        color: white; /* Karanlık modda yazı rengi beyaz */
+    }
 </style>
+</html>
