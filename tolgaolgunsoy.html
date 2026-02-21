@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tolga Olgunsoy - Portfolio</title>
+    <style>
+        :root {
+            --navy: #0a192f;
+            --light-navy: #112240;
+            --lightest-navy: #233554;
+            --slate: #8892b0;
+            --light-slate: #a8b2d1;
+            --lightest-slate: #ccd6f6;
+            --white: #e6f1ff;
+            --green: #64ffda;
+            --green-tint: rgba(100, 255, 218, 0.1);
+            --font-sans: 'Calibre', 'Inter', sans-serif;
+            --font-mono: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--navy);
+            color: var(--slate);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--lightest-slate);
+            transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        a:hover {
+            color: var(--green);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .nav-links a span {
+            color: var(--green);
+            margin-right: 5px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            font-family: var(--font-mono);
+            color: var(--green);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 80px);
+            color: var(--lightest-slate);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            font-size: clamp(40px, 8vw, 80px);
+            color: var(--slate);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            max-width: 900px;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
+
+        .hero p a {
+            color: var(--green);
+            border-bottom: 1px solid var(--green);
+        }
+
+        .cta-button {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--green);
+            background-color: transparent;
+            border: 1px solid var(--green);
+            border-radius: 4px;
+            padding: 1.25rem 1.75rem;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .cta-button:hover {
+            background-color: var(--green-tint);
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 100px 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            color: var(--lightest-slate);
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 300px;
+            height: 1px;
+            background-color: var(--lightest-navy);
+            margin-right: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 200px;
+            height: 1px;
+            background-color: var(--lightest-navy);
+            margin-left: 20px;
+        }
+
+        .section-title span {
+            font-family: var(--font-mono);
+            color: var(--green);
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 50px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-text a {
+            color: var(--green);
+            border-bottom: 1px solid var(--green);
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            aspect-ratio: 1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .about-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--green);
+            opacity: 0.3;
+            z-index: 1;
+            transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .about-image-wrapper:hover::before {
+            opacity: 0;
+            background-color: transparent;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1);
+            transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .about-image-wrapper:hover img {
+            filter: none;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--light-navy);
+            padding: 2rem;
+            border-radius: 4px;
+            transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .folder-icon {
+            color: var(--green);
+            font-size: 40px;
+        }
+
+        .project-links a {
+            color: var(--slate);
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+
+        .project-links a:hover {
+            color: var(--green);
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            color: var(--lightest-slate);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .project-description {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .project-tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        .project-tech-list li {
+            list-style: none;
+        }
+
+        .work-container {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 50px;
+        }
+
+        .tab-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tab-button {
+            background: transparent;
+            border: none;
+            color: var(--slate);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            padding: 15px 20px;
+            text-align: left;
+            cursor: pointer;
+            border-left: 2px solid var(--lightest-navy);
+            transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .tab-button:hover,
+        .tab-button.active {
+            color: var(--green);
+            background-color: var(--light-navy);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h3 {
+            font-size: 1.5rem;
+            color: var(--lightest-slate);
+            margin-bottom: 5px;
+        }
+
+        .tab-content h4 {
+            font-size: 1rem;
+            color: var(--slate);
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        .tab-content ul {
+            list-style: none;
+        }
+
+        .tab-content ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .tab-content ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+        }
+
+        .contact {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 10%;
+        }
+
+        .contact-label {
+            font-family: var(--font-mono);
+            color: var(--green);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .contact h2 {
+            font-size: clamp(40px, 6vw, 60px);
+            color: var(--lightest-slate);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            position: fixed;
+            left: 40px;
+            bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            color: var(--slate);
+        }
+
+        .social-links a:hover {
+            color: var(--green);
+            transform: translateY(-3px);
+        }
+
+        
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 100px 20px;
+            }
+
+            .section-title::before,
+            .section-title::after {
+                width: 100px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .work-container {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-list {
+                flex-direction: row;
+                overflow-x: auto;
+                margin-bottom: 20px;
+            }
+
+            .tab-button {
+                border-left: none;
+                border-bottom: 2px solid var(--lightest-navy);
+                white-space: nowrap;
+            }
+
+            .social-links,
+            .email-link {
+                display: none;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom Cursor - Brittany Chiang Style */
+        .cursor, .cursor-dot {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .cursor {
+            width: 16px;
+            height: 16px;
+            border: 1px solid var(--green);
+            margin-left: -8px;
+            margin-top: -8px;
+            transition: opacity 0.15s ease-out;
+        }
+        
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--green);
+            margin-left: -3px;
+            margin-top: -3px;
+        }
+
+        .hero > * {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .hero > *:nth-child(1) { animation-delay: 0.1s; }
+        .hero > *:nth-child(2) { animation-delay: 0.2s; }
+        .hero > *:nth-child(3) { animation-delay: 0.3s; }
+        .hero > *:nth-child(4) { animation-delay: 0.4s; }
+        .hero > *:nth-child(5) { animation-delay: 0.5s; }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    <nav>
+        <div class="logo"><TO /></div>
+        <ul class="nav-links">
+            <li><a href="#about"><span>01.</span> About</a></li>
+            <li><a href="#projects"><span>02.</span> Projects</a></li>
+            <li><a href="#work"><span>03.</span> Experience</a></li>
+            <li><a href="#contact"><span>04.</span> Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <p class="hero-label">Hi, my name is</p>
+        <h1>Tolga Olgunsoy.</h1>
+        <h2>I build things for the web.</h2>
+        <p>
+            I'm a developer and Management Information Systems student passionate about building secure, AI-powered digital experiences. I bridge the gap between technical execution and business strategy using Python, C++, Java, and C#. Beyond the code, you can find me on the tennis court, climbing, or running around Hyrule searching for Korok seeds. Always building, always learning.
+        </p>
+        <a href="#projects" class="cta-button">Check out my work!</a>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title"><span>01.</span> About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    Hi, I'm Tolga Olgunsoy.
+                </p>
+                <p>
+                    For me, software development is an art of balancing aesthetic design, robust system architecture, the speed of AI, and ironclad security. As a Management Information Systems (MIS) student, I bridge the gap between technical execution and business strategy, ensuring that code doesn't just work—it delivers value. I don't just 'write code'; I architect end-to-end, secure, and scalable digital products.
+                </p>
+                <p>
+                    <strong>What I bring to the table:</strong>
+                </p>
+                <p>
+                    <strong>AI & Vibe Coding:</strong> I embrace AI-augmented workflows to turn complex architectures into reality with speed and precision. Integrating AI into the development process is at the heart of how I build today.
+                </p>
+                <p>
+                    <strong>Tech Stack Mastery:</strong> I choose the right tool for the job. Whether it's Python for AI and data-driven solutions, or Java, C#, and C++ for high-performance, system-level development, I thrive on versatility.
+                </p>
+                <p>
+                    <strong>Full-Stack Proficiency:</strong> From database design and server management to crafting pixel-perfect frontend interfaces, I handle the entire product lifecycle.
+                </p>
+                <p>
+                    <strong>Security-Minded Engineering:</strong> Every line of code I write is built with defense in mind. My passion for web security and system resilience ensures that my projects are not just functional, but inherently secure.
+                </p>
+                <p>
+                    <strong>Business-Tech Synergy:</strong> I understand that technology is a means to an end. My MIS background allows me to align technical solutions with organizational goals and user needs.
+                </p>
+                <p>
+                    If you're looking to bring your ideas to life at the intersection of technology and business, powered by AI and built with security in mind—let's talk!
+                </p>
+            </div>
+            <div class="about-image">
+                <div class="about-image-wrapper">
+                    <img src="profile.png" alt="Tolga Olgunsoy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title"><span>02.</span> Some Things I've Built</h2>
+        <div class="projects-grid">
+            <!-- Project 1: Viventia -->
+            <div class="project-card">
+                <div class="project-top">
+                    <i class="folder-icon far fa-folder"></i>
+                    <div class="project-links">
+                        <a href="https://github.com/tolgaolgunsoy1/Viventia" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3 class="project-title">Viventia</h3>
+                <p class="project-description">
+                    An innovative project focused on creating meaningful digital experiences with cutting-edge technology.
+                </p>
+                <ul class="project-tech-list">
+                    <li>Python</li>
+                    <li>AI/ML</li>
+                    <li>Full-Stack</li>
+                </ul>
+            </div>
+
+            <!-- Project 2: APEX Extraction Suite -->
+            <div class="project-card">
+                <div class="project-top">
+                    <i class="folder-icon far fa-folder"></i>
+                    <div class="project-links">
+                        <a href="https://github.com/tolgaolgunsoy1/APEX-Extraction-Suite" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3 class="project-title">APEX Extraction Suite</h3>
+                <p class="project-description">
+                    A powerful extraction toolkit designed for efficient data processing and analysis workflows.
+                </p>
+                <ul class="project-tech-list">
+                    <li>Python</li>
+                    <li>Data Processing</li>
+                    <li>Automation</li>
+                </ul>
+            </div>
+
+            <!-- Project 3: J.A.R.V.I.S -->
+            <div class="project-card">
+                <div class="project-top">
+                    <i class="folder-icon far fa-folder"></i>
+                    <div class="project-links">
+                        <a href="https://github.com/tolgaolgunsoy1/J.A.R.V.I.S" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3 class="project-title">J.A.R.V.I.S</h3>
+                <p class="project-description">
+                    An AI-powered assistant system inspired by the iconic Marvel character, featuring voice recognition and automation capabilities.
+                </p>
+                <ul class="project-tech-list">
+                    <li>Python</li>
+                    <li>AI</li>
+                    <li>Voice Recognition</li>
+                </ul>
+            </div>
+
+            <!-- Project 4: CodeCraft AI -->
+            <div class="project-card">
+                <div class="project-top">
+                    <i class="folder-icon far fa-folder"></i>
+                    <div class="project-links">
+                        <a href="https://github.com/tolgaolgunsoy1/CodeCraft-AI" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3 class="project-title">CodeCraft AI</h3>
+                <p class="project-description">
+                    An AI-powered code generation and optimization tool that helps developers write better code faster.
+                </p>
+                <ul class="project-tech-list">
+                    <li>Python</li>
+                    <li>AI/ML</li>
+                    <li>Code Analysis</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="work">
+        <h2 class="section-title"><span>03.</span> Where I've Worked</h2>
+        <div class="work-container">
+            <div class="tab-list">
+                <button class="tab-button active" data-tab="zf">ZF Group</button>
+                <button class="tab-button" data-tab="topkapi1">Istanbul Topkapi University</button>
+                <button class="tab-button" data-tab="canva">Canva</button>
+            </div>
+            
+            <div class="tab-contents">
+                <div class="tab-content active" id="zf">
+                    <h3>IT Intern</h3>
+                    <h4>ZF Group | July 2025 - August 2025</h4>
+                    <ul>
+                        <li>Served as a short-term summer intern in the Information Technology (IT) department</li>
+                        <li>Provided basic system administration and user support</li>
+                        <li>Supported IT processes and developed teamwork skills</li>
+                    </ul>
+                </div>
+                
+                <div class="tab-content" id="topkapi1">
+                    <h3>Public Relations and Advertising Specialist</h3>
+                    <h4>Istanbul Topkapi University | June 2024 - February 2025</h4>
+                    <ul>
+                        <li>Worked in the academic and administrative units of the university</li>
+                        <li>Gained experience as a part-time student worker</li>
+                        <li>Developed teamwork and business management skills</li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="canva">
+                    <h3>Freelance Graphic Designer</h3>
+                    <h4>Canva | January 2019 - June 2022</h4>
+                    <ul>
+                        <li>Created logo designs and graphic designs</li>
+                        <li>Provided professional design services to clients as a freelancer</li>
+                        <li>Developed creative design skills</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <p class="contact-label">04. What's Next?</p>
+        <h2>Get In Touch</h2>
+        <p>
+            My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+        </p>
+        <a href="mailto:tolgaolgunsoy575@gmail.com" class="cta-button">Say Hello</a>
+    </section>
+
+    <footer>
+        <p>Designed & Built by Tolga Olgunsoy</p>
+    </footer>
+
+    <div class="social-links">
+        <a href="https://github.com/tolgaolgunsoy1" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/tolga-olgunsoy-30a088254/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        
+    </div>
+
+
+
+    <script>
+        // Custom Cursor - Brittany Chiang Style
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            // Ring follows with delay
+            const dx = mouseX - cursorX;
+            const dy = mouseY - cursorY;
+            cursorX += dx * 0.15;
+            cursorY += dy * 0.15;
+            
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            
+            // Dot follows exactly
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
+            
+            requestAnimationFrame(animateCursor);
+        }
+        
+        animateCursor();
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.backgroundColor = 'rgba(10, 25, 47, 0.95)';
+            } else {
+                nav.style.backgroundColor = 'rgba(10, 25, 47, 0.85)';
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
